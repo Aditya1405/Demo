@@ -25,6 +25,7 @@ public class TestController {
     public ResponseEntity<List<User>> getData(String city){
 //        return userService.getAllUser();
         //        ---- http status handling when there is no user return 404
+        System.out.println("works get");
         List<User> list=userService.getAllUser();
         if(list.size()<=0){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

@@ -45,9 +45,11 @@ public class TestController {
         //return userService.getUserById(id);
     }
     @PostMapping("/users")
-    public ResponseEntity<User> saveUser(@RequestBody @Valid User user, BindingResult bindingResult){
+    public ResponseEntity<List> saveUser(@RequestBody @Valid User user, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
-            return ResponseEntity.status(HttpStatus.LENGTH_REQUIRED).build();
+            return ResponseEntity.status(HttpStatus.LENGTH_REQUIRED).body(bindingResult.getAllErrors());
+
+
         }
         User u= null;
         try {

@@ -49,7 +49,6 @@ public class TestController {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.status(HttpStatus.LENGTH_REQUIRED).body(bindingResult.getAllErrors());
 
-
         }
         User u= null;
         try {

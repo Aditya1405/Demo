@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "User")
@@ -12,6 +13,7 @@ public class User {
     @Size(min=2, max=30)
     private String name;
     private String city;
+    @NotNull
     private String status;
 
     public User() {

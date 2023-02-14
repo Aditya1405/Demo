@@ -3,10 +3,12 @@ package com.example.demo.controller;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.entities.User;
 import com.example.demo.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,7 +45,10 @@ public class TestController {
         //return userService.getUserById(id);
     }
     @PostMapping("/users")
-    public ResponseEntity<User> saveUser(@RequestBody User user){
+    public ResponseEntity<User> saveUser(@RequestBody @Valid User user, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.LENGTH_REQUIRED).build();
+        }
         User u= null;
         try {
             u = userService.SaveData(user);

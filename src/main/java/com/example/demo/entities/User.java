@@ -1,7 +1,7 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "User")
 public class User {
@@ -9,6 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+    @Size(min=2, max=30)
     private String name;
     private String city;
     private String status;

@@ -14,7 +14,7 @@ public class User {
     @Size(min=2, max=30)
     private String name;
     private String city;
-    @Min(1)
+    @Min(value = 5)
     private String status;
 
     public User() {
